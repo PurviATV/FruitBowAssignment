@@ -1,62 +1,41 @@
 package tv.assignment;
 
-import tv.assignment.Apple;
-import tv.assignment.Banana;
-import tv.assignment.Orange;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FruitBowl {
 
-    List<Apple> appleBowl;
-    List<Banana> bananaBowl ;
-    List<Orange> orangeBowl ;
-    List<Object> mixFruitBowl;
+    List<Fruit> fruitBowl;
 
     public FruitBowl() {
-        appleBowl = new ArrayList<>();
-        bananaBowl = new ArrayList<>();
-        orangeBowl = new ArrayList<>();
-        mixFruitBowl = new ArrayList<>();
-
+        fruitBowl = new ArrayList<>();
     }
 
-    public void addFruit(Object fruit) {
-        mixFruitBowl.add(fruit);
-
+    public void addFruit(Fruit fruit) {
+        fruitBowl.add(fruit);
     }
-    public List<Object> getFruitList()
+    public void addFruits(List<Fruit> fruit)  {
+        fruitBowl.addAll(fruit);
+    }
+
+    public List<Fruit> getApples()
     {
-        return mixFruitBowl;
+        return fruitBowl.stream().filter(fruit -> fruit instanceof Apple).collect(Collectors.toList());
+    }
+    public List<Fruit> getOranges()
+    {
+        return fruitBowl.stream().filter(fruit -> fruit instanceof Orange).collect(Collectors.toList());
+    }
+    public List<Fruit> getBananas()
+    {
+        return fruitBowl.stream().filter(fruit -> fruit instanceof Banana).collect(Collectors.toList());
     }
 
-    public void segregateFruits() {
-        for (Object fruit : mixFruitBowl)
-            if (fruit instanceof Apple)
-                appleBowl.add((Apple) fruit);
-            else if (fruit instanceof Orange)
-                orangeBowl.add((Orange) fruit);
-            else if (fruit instanceof Banana)
-                bananaBowl.add((Banana) fruit);
-    }
-
-
-    public int getCountInFruitBowl() {
-        return mixFruitBowl.size();
-    }
-
-    public int getCountInAppleBowl() {
-        return appleBowl.size();
-
-    }
-
-    public int getCountInBananaBowl() {
-        return bananaBowl.size();
+    public int getSizeOfBowl()
+    {
+        return fruitBowl.size();
     }
 
 
-    public int getCountInOrangeBowl() {
-        return orangeBowl.size();
-    }
 }

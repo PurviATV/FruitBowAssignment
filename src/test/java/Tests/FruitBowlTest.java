@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import tv.assignment.*;
 
 public class FruitBowlTest {
@@ -25,19 +24,33 @@ public class FruitBowlTest {
     @Test
     public void Test001_Verify_Count_Of_Fruits_In_FruitBowl()
     {
-        Assert.assertEquals(fruitbowl.getCountInFruitBowl(),7);
+        Assert.assertEquals(fruitbowl.getSizeOfBowl(),7);
         Reporter.log("Fruit bowl is present with 7 fruits",true);
     }
 
     @Test
-    public void Test002_SegregateFruits_And_Verify_Count_In_Each_Bowl()
+    public void Test002_Get_Apple_Bowl_From_FruitsBowl()
     {
-        SoftAssert soft=new SoftAssert();
-        fruitbowl.segregateFruits();
-        soft.assertEquals(fruitbowl.getCountInAppleBowl(),2);
-        soft.assertEquals(fruitbowl.getCountInBananaBowl(),3);
-        soft.assertEquals(fruitbowl.getCountInOrangeBowl(),2);
-        soft.assertAll();
-        Reporter.log("Fruit bowl is segregated in 3 bowls",true);
+        FruitBowl apples=new FruitBowl();
+        apples.addFruits(fruitbowl.getApples());
+        Assert.assertEquals(apples.getSizeOfBowl(),2);
+        Reporter.log("Apple bowl is created",true);
     }
+    @Test
+    public void Test003_Get_Orange_Bowl_From_FruitsBowl()
+    {
+        FruitBowl oranges=new FruitBowl();
+        oranges.addFruits(fruitbowl.getOranges());
+        Assert.assertEquals(oranges.getSizeOfBowl(),2);
+        Reporter.log("Orange bowl is created",true);
+    }
+    @Test
+    public void Test004_Get_Banana_Bowl_From_FruitsBowl()
+    {
+        FruitBowl bananas=new FruitBowl();
+        bananas.addFruits(fruitbowl.getBananas());
+        Assert.assertEquals(bananas.getSizeOfBowl(),3);
+        Reporter.log("Banana bowl is created",true);
+    }
+
 }
