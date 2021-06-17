@@ -4,9 +4,9 @@ Problem Statement: Fruit bowl (OOP)
 A fruit bowl contains fruits - Apples, Oranges and Bananas. Segregate them into different bowls
 
 ## Technology Used:
-Language: JAVA
-Build Tool: Gradle
-Testing framework: TestNG
+* Language: JAVA
+* Build Tool: Gradle
+* Testing framework: TestNG
 
 ## System Requirements:
 * JDK 1.8 or above
